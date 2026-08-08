@@ -250,17 +250,19 @@ main{ margin-left:var(--sidebar-w); }
 .section__head h2{
   margin:0;
   font-family:var(--serif);
-  font-weight:300;
-  font-size:clamp(2rem,3.6vw,3.25rem);
-  line-height:1.08;
-  letter-spacing:-.005em;
+  font-weight:400;
+  font-size:clamp(1.5rem,2.1vw,2rem);
+  line-height:1.15;
+  letter-spacing:.005em;
 }
 
 .section__body{ max-width:44rem; padding-top:.35rem; }
 
-/* Prose — ready for content that gets added later */
-.prose > * + *{ margin-top:1.15em; }
-.prose p{ margin:0; color:var(--ink-soft); }
+/* Prose */
+.prose{ color:var(--ink-soft); max-width:38rem; }
+.prose p{ margin:1.4em 0 0; }
+.prose > * + *{ margin-top:1.4em; }
+.prose > :first-child{ margin-top:0; }
 .prose h3{
   margin:2.25em 0 0;
   font-family:var(--serif);
@@ -270,6 +272,32 @@ main{ margin-left:var(--sidebar-w); }
 }
 .prose a{ border-bottom:1px solid var(--rule); }
 .prose a:hover{ border-color:var(--accent); color:var(--accent); }
+
+/* ── CV blocks (Education, etc.) ─────────────────────────── */
+
+.prose + .cv,
+.cv + .cv{ margin-top:clamp(2rem,4vh,3rem); }
+
+.cv__title{
+  margin:0 0 .85rem;
+  font-family:var(--sans);
+  font-size:.6875rem;
+  font-weight:400;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.cv__list{
+  margin:0; padding:0; list-style:none;
+  border-top:1px solid var(--rule);
+  max-width:32rem;
+}
+.cv__list li{
+  padding:.85rem 0;
+  border-bottom:1px solid var(--rule);
+  color:var(--ink-soft);
+}
 
 /* ── Project grid (unused until filled in) ───────────────── */
 
