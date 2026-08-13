@@ -85,7 +85,7 @@ a{ color:inherit; text-decoration:none; }
 .brand__name{
   display:block;
   font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size:clamp(1.95rem,2.08vw,2.405rem);
+  font-size:3rem;
   font-weight:700;
   line-height:1.15;
   letter-spacing:.005em;
