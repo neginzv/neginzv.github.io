@@ -6,7 +6,7 @@ Static one-page portfolio site. No build step, no dependencies.
 index.html      markup + all section placeholders
 styles.css      design system (colors, type, layout)
 script.js       mobile menu, scroll-spy nav, reveal-on-scroll
-assets/hero.jpg front image
+images/hero-new.jpg front image
 ```
 
 ## Preview locally
