@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Negin Zadehvakili — Interdisciplinary Artist</title>
 <meta name="description" content="Negin Zadehvakili — interdisciplinary artist. Portfolio, projects and contact.">
 
@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Geist:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Geist:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,7 +23,6 @@
 
 <!-- ─────────────────────────────  MOBILE BAR  ───────────────────────────── -->
 <header class="mobilebar">
-  <a class="mobilebar__name" href="#home">Negin Zadehvakili</a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="sidebar" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -32,11 +31,6 @@
 <!-- ─────────────────────────────  SIDEBAR  ───────────────────────────── -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar__inner">
-
-    <a class="brand" href="#home">
-      <span class="brand__name">Negin Zadehvakili</span>
-      <span class="brand__role">Interdisciplinary Artist</span>
-    </a>
 
     <nav class="nav" aria-label="Primary">
       <ul>
@@ -69,111 +63,132 @@
 <main id="main">
 
   <!-- HOME ─────────────────────────────────────────────────────────── -->
-  <section id="home" class="hero" data-section>
-    <div class="hero__text">
-      <p class="eyebrow">Interdisciplinary Artist</p>
-      <!-- TEXT PLACEHOLDER — unhide by removing class "is-hidden" -->
-      <p class="hero__lede is-hidden" data-placeholder="home-lede"></p>
-      <a class="scroll-cue" href="#bio">
-        <span>Explore</span>
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-          <path d="M12 4v15m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-      </a>
-    </div>
-
+  <section id="home" class="hero" data-panel>
     <figure class="hero__figure">
-      <img src="images/hero-new.jpg" alt="Negin Zadehvakili" width="2338" height="1700">
+      <img src="images/hero-new.jpg" alt="Artwork by Negin Zadehvakili" width="2338" height="1700">
     </figure>
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="hero__title">
+      <h1 class="hero__name">Negin Zadehvakili</h1>
+      <p class="hero__role">Interdisciplinary Artist</p>
+    </div>
   </section>
 
   <!-- BIO ──────────────────────────────────────────────────────────── -->
-  <section id="bio" class="section" data-section>
-    <header class="section__head">
-      <p class="eyebrow">01</p>
-      <h2>Bio</h2>
-    </header>
-    <div class="section__body">
-      <!-- TEXT PLACEHOLDER — add paragraphs here -->
-      <div class="prose is-hidden" data-placeholder="bio"></div>
+  <section id="bio" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">01</p>
+        <h2>Bio</h2>
+      </header>
+      <div class="panel__body">
+        <!-- TEXT PLACEHOLDER — add paragraphs here -->
+        <div class="prose is-hidden" data-placeholder="bio"></div>
 
-      <div class="cv">
-        <h3 class="cv__title">Education</h3>
-        <ul class="cv__list">
-          <li>Bachelor of Art in Music Performance</li>
-          <li>Fine Arts High School Diploma</li>
-        </ul>
+        <div class="cv">
+          <h3 class="cv__title">Education</h3>
+          <ul class="cv__list">
+            <li>Bachelor of Art in Music Performance</li>
+            <li>Fine Arts High School Diploma</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ARTIST STATEMENT ─────────────────────────────────────────────── -->
-  <section id="statement" class="section" data-section>
-    <header class="section__head">
-      <p class="eyebrow">02</p>
-      <h2>Artist Statement</h2>
-    </header>
-    <div class="section__body">
-      <div class="prose" data-placeholder="statement">
-        <p>My practice emerges from the intersection of sound, image, the body, and memory. Working across performance, installation, photography, sound, and moving image, I explore how lived experience is embodied, remembered, fragmented, and transformed.</p>
+  <section id="statement" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">02</p>
+        <h2>Artist Statement</h2>
+      </header>
+      <div class="panel__body">
+        <div class="prose" data-placeholder="statement">
+          <p>My practice emerges from the intersection of sound, image, the body, and memory. Working across performance, installation, photography, sound, and moving image, I explore how lived experience is embodied, remembered, fragmented, and transformed.</p>
 
-        <p>As a Middle Eastern artist, my practice is shaped by a cultural and social landscape in which tradition and modernity, collective memory and individual experience, belonging and displacement, often exist in tension. I do not approach this context as a fixed identity or a singular narrative; rather, it forms an underlying layer of my experience and informs the ways I understand the body, memory, language, space, and belonging. The complexities of growing up within and navigating between different cultural, social, and geographic contexts continue to influence the questions I bring into my work.</p>
+          <p>As a Middle Eastern artist, my practice is shaped by a cultural and social landscape in which tradition and modernity, collective memory and individual experience, belonging and displacement, often exist in tension. I do not approach this context as a fixed identity or a singular narrative; rather, it forms an underlying layer of my experience and informs the ways I understand the body, memory, language, space, and belonging. The complexities of growing up within and navigating between different cultural, social, and geographic contexts continue to influence the questions I bring into my work.</p>
 
-        <p>My relationship with music began in childhood and developed through years of intensive study and live performance. Alongside music, I pursued painting and visual practices, creating a parallel relationship with image and material. My experience with Iranian mirror work (Āineh-kāri) further shaped my understanding of reflection, repetition, fragmentation, and the transformation of space through material. These experiences continue to inform my approach to the body, surface, image, and presence.</p>
+          <p>My relationship with music began in childhood and developed through years of intensive study and live performance. Alongside music, I pursued painting and visual practices, creating a parallel relationship with image and material. My experience with Iranian mirror work (Āineh-kāri) further shaped my understanding of reflection, repetition, fragmentation, and the transformation of space through material. These experiences continue to inform my approach to the body, surface, image, and presence.</p>
 
-        <p>I am interested in the body not only as a physical presence, but as a site where experience and memory are stored, carried, and reconstructed. Sound enters my work through rhythm, repetition, duration, silence, and physical presence, while photography, moving image, and installation allow me to examine what can be revealed, concealed, fragmented, or reconstructed. Performance becomes a space in which these elements can coexist and where an intimate experience can open into a broader reflection on contemporary life.</p>
+          <p>I am interested in the body not only as a physical presence, but as a site where experience and memory are stored, carried, and reconstructed. Sound enters my work through rhythm, repetition, duration, silence, and physical presence, while photography, moving image, and installation allow me to examine what can be revealed, concealed, fragmented, or reconstructed. Performance becomes a space in which these elements can coexist and where an intimate experience can open into a broader reflection on contemporary life.</p>
 
-        <p>My work is concerned with the tensions between presence and absence, memory and forgetting, intimacy and distance, the personal and the collective. I am particularly interested in the gap between an experience itself and our ability to articulate, communicate, or represent it. This gap—between what is lived, what is remembered, and what can be expressed—often becomes the space from which my works emerge.</p>
+          <p>My work is concerned with the tensions between presence and absence, memory and forgetting, intimacy and distance, the personal and the collective. I am particularly interested in the gap between an experience itself and our ability to articulate, communicate, or represent it. This gap—between what is lived, what is remembered, and what can be expressed—often becomes the space from which my works emerge.</p>
 
-        <p>I do not begin with a predetermined medium. Instead, I allow each work to develop its own material and form in response to its conceptual and emotional structure. Through this process, sound can become image, the body can become material, memory can become space, and personal experience can be transformed into a visual and performative language.</p>
+          <p>I do not begin with a predetermined medium. Instead, I allow each work to develop its own material and form in response to its conceptual and emotional structure. Through this process, sound can become image, the body can become material, memory can become space, and personal experience can be transformed into a visual and performative language.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PROJECT ──────────────────────────────────────────────────────── -->
-  <section id="project" class="section" data-section>
-    <header class="section__head">
-      <p class="eyebrow">03</p>
-      <h2>Project</h2>
-    </header>
-    <div class="section__body">
-      <!-- TEXT PLACEHOLDER — add project description here -->
-      <div class="prose is-hidden" data-placeholder="project"></div>
+  <section id="project" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">03</p>
+        <h2>Project</h2>
+      </header>
+      <div class="panel__body">
+        <!-- TEXT PLACEHOLDER — add project description here -->
+        <div class="prose is-hidden" data-placeholder="project"></div>
 
-      <!-- PROJECT GRID — ready to use. Delete class "is-hidden" and fill in.
-      <ul class="works">
-        <li class="work">
-          <a href="#">
-            <figure><img src="assets/work-01.jpg" alt=""></figure>
-            <h3>Project title</h3>
-            <p class="work__meta">Venue · Year</p>
-          </a>
-        </li>
-      </ul>
-      -->
+        <!-- PROJECT GRID — ready to use. Delete class "is-hidden" and fill in.
+        <ul class="works">
+          <li class="work">
+            <a href="#">
+              <figure><img src="images/work-01.jpg" alt=""></figure>
+              <h3>Project title</h3>
+              <p class="work__meta">Venue · Year</p>
+            </a>
+          </li>
+        </ul>
+        -->
+      </div>
     </div>
   </section>
 
   <!-- CONTACT ──────────────────────────────────────────────────────── -->
-  <section id="contact" class="section section--last" data-section>
-    <header class="section__head">
-      <p class="eyebrow">04</p>
-      <h2>Contact</h2>
-    </header>
-    <div class="section__body">
-      <!-- TEXT PLACEHOLDER — add email / booking details here -->
-      <div class="prose is-hidden" data-placeholder="contact"></div>
+  <section id="contact" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">04</p>
+        <h2>Contact</h2>
+      </header>
+      <div class="panel__body">
+        <!-- TEXT PLACEHOLDER — add email / booking details here -->
+        <div class="prose is-hidden" data-placeholder="contact"></div>
 
-      <ul class="contact-list">
-        <li>
-          <span class="contact-list__label">Instagram</span>
-          <a href="https://www.instagram.com/negin_zadeh_vakili" target="_blank" rel="noopener">@negin_zadeh_vakili</a>
-        </li>
-        <!-- <li>
-          <span class="contact-list__label">Email</span>
-          <a href="mailto:hello@example.com">hello@example.com</a>
-        </li> -->
-      </ul>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-list__label">Instagram</span>
+            <a href="https://www.instagram.com/negin_zadeh_vakili" target="_blank" rel="noopener">@negin_zadeh_vakili</a>
+          </li>
+          <!-- <li>
+            <span class="contact-list__label">Email</span>
+            <a href="mailto:hello@example.com">hello@example.com</a>
+          </li> -->
+        </ul>
+      </div>
     </div>
   </section>
 

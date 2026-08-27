@@ -1,5 +1,7 @@
 /* ════════════════════════════════════════════════════════════
    Negin Zadehvakili — portfolio
+   Single-screen layout: the viewport never scrolls; section
+   panels open over the artwork and scroll inside themselves.
    ════════════════════════════════════════════════════════════ */
 
 :root{
@@ -11,8 +13,8 @@
   --rule:       rgba(25,24,22,.13);
   --accent:     #7a5c4b;
 
-  --sidebar-w:  clamp(260px, 20vw, 290px);
-  --pad:        clamp(1.75rem, 5vw, 5rem);
+  --sidebar-w:  clamp(240px, 19vw, 280px);
+  --pad:        clamp(1.75rem, 4vw, 4rem);
 
   --serif: "Cousine", monospace;
   --sans:  "Cousine", monospace;
@@ -22,7 +24,11 @@
 
 *,*::before,*::after{ box-sizing:border-box; }
 
-html{ scroll-behavior:smooth; }
+html,body{
+  height:100%;
+  overflow:hidden;              /* the page itself never scrolls */
+  overscroll-behavior:none;
+}
 
 body{
   margin:0;
@@ -79,29 +85,6 @@ a{ color:inherit; text-decoration:none; }
   gap:2rem;
 }
 
-.brand{ display:block; }
-
-.brand__name{
-  display:block;
-  font-family:"Geist", sans-serif;
-  font-size:20px;
-  font-weight:700;
-  line-height:1.15;
-  letter-spacing:.005em;
-  white-space:nowrap;
-}
-
-.brand__role{
-  display:block;
-  margin-top:.7rem;
-  max-width:14ch;
-  font-size:.625rem;
-  line-height:1.9;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-
 /* ── Nav ─────────────────────────────────────────────────── */
 
 .nav{ margin-top:auto; }
@@ -117,7 +100,7 @@ a{ color:inherit; text-decoration:none; }
   font-size:.9375rem;
   letter-spacing:.06em;
   color:var(--ink-soft);
-  transition:color .3s var(--ease), padding-left .35s var(--ease);
+  transition:color .3s var(--ease);
 }
 
 .nav a::before{
@@ -166,101 +149,128 @@ a{ color:inherit; text-decoration:none; }
 
 /* ══════════════════════════  MAIN  ═════════════════════════ */
 
-main{ margin-left:var(--sidebar-w); }
+main{
+  position:fixed;
+  inset:0 0 0 var(--sidebar-w);
+  background:var(--paper);
+  overflow:hidden;
+}
 
-/* ── Hero ────────────────────────────────────────────────── */
+/* ── Hero: artwork fills the whole stage ─────────────────── */
 
 .hero{
-  min-height:100svh;
-  display:grid;
-  grid-template-columns:1fr minmax(0,46%);
-  align-items:start;
-  gap:clamp(2rem,4vw,4rem);
-  position:relative;
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  background:#100e0d;
 }
-
-.hero__text{
-  padding:6rem var(--pad);
-  max-width:34rem;
-}
-
-.hero__title{
-  margin:1.25rem 0 0;
-  font-family:var(--serif);
-  font-weight:300;
-  font-size:clamp(2.75rem, 6.5vw, 5.25rem);
-  line-height:1.03;
-  letter-spacing:-.01em;
-}
-.hero__title em{
-  font-style:italic;
-  color:var(--accent);
-}
-
-.hero__lede{
-  margin:1.75rem 0 0;
-  max-width:32ch;
-  color:var(--ink-soft);
-}
-
-.scroll-cue{
-  display:inline-flex;
-  align-items:center;
-  gap:.6rem;
-  margin-top:3rem;
-  font-size:.6875rem;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:var(--muted);
-  transition:color .3s var(--ease);
-}
-.scroll-cue svg{ transition:transform .5s var(--ease); }
-.scroll-cue:hover{ color:var(--ink); }
-.scroll-cue:hover svg{ transform:translateY(4px); }
 
 .hero__figure{
   position:absolute;
-  top:clamp(2.5rem,4vw,3.75rem);
-  right:clamp(2.5rem,4vw,3.75rem);
-  width:min(40vw,34rem);
+  inset:0;
   margin:0;
 }
 .hero__figure img{
   width:100%;
-  height:auto;
-  object-fit:contain;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
   filter:saturate(.92) contrast(1.02);
 }
 
-/* ── Sections ────────────────────────────────────────────── */
+/* Soft scrim behind the name so it stays legible on any crop. */
+.hero__veil{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom right,
+      rgba(12,10,9,.62) 0%,
+      rgba(12,10,9,.34) 26%,
+      rgba(12,10,9,0)   58%);
+}
 
-.section{
-  padding:clamp(5rem,12vh,9rem) var(--pad);
-  border-top:1px solid var(--rule);
+.hero__title{
+  position:absolute;
+  top:clamp(2rem, 6vh, 4.25rem);
+  left:clamp(1.75rem, 4vw, 4rem);
+  right:clamp(1.75rem, 4vw, 4rem);
+}
+
+.hero__name{
+  margin:0;
+  font-family:"Geist", sans-serif;
+  font-weight:400;
+  font-size:clamp(1.65rem, 3.4vw, 3.25rem);
+  line-height:1.1;
+  letter-spacing:.14em;
+  white-space:nowrap;
+  color:#fbf9f6;
+  text-shadow:0 1px 24px rgba(0,0,0,.55), 0 1px 3px rgba(0,0,0,.4);
+}
+
+.hero__role{
+  margin:1.1rem 0 0;
+  font-size:clamp(.625rem, .55vw + .45rem, .75rem);
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(251,249,246,.82);
+  text-shadow:0 1px 12px rgba(0,0,0,.55);
+}
+
+/* ══════════════════════════  PANELS  ═══════════════════════ */
+
+.panel{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  background:var(--paper);
+  opacity:0;
+  transition:opacity .45s var(--ease);
+}
+.panel.is-open{ opacity:1; }
+
+.panel__scroll{
+  position:relative;
+  height:100%;
+  overflow-y:auto;              /* scrolling lives inside the panel */
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:clamp(3rem,8vh,5.5rem) var(--pad) clamp(3rem,8vh,5rem);
   display:grid;
-  grid-template-columns:minmax(0,15rem) minmax(0,1fr);
-  gap:clamp(2rem,5vw,5rem);
-  min-height:60svh;
+  grid-template-columns:minmax(0,13rem) minmax(0,1fr);
+  gap:clamp(1.5rem,4vw,4rem);
   align-content:start;
 }
 
-.section--last{ padding-bottom:clamp(7rem,16vh,12rem); }
+.panel__close{
+  position:absolute;
+  top:clamp(1.25rem,3vh,2rem);
+  right:clamp(1.25rem,3vw,2.25rem);
+  width:2.25rem; height:2.25rem;
+  display:grid; place-items:center;
+  padding:0;
+  background:none; border:0; cursor:pointer;
+  color:var(--muted);
+  transition:color .3s var(--ease), transform .3s var(--ease);
+}
+.panel__close:hover{ color:var(--ink); transform:rotate(90deg); }
 
-.section__head .eyebrow{ margin-bottom:.9rem; }
+.panel__head .eyebrow{ margin-bottom:.9rem; }
 
-.section__head h2{
+.panel__head h2{
   margin:0;
   font-family:var(--serif);
   font-weight:400;
-  font-size:clamp(1.5rem,2.1vw,2rem);
+  font-size:clamp(1.4rem,2vw,1.85rem);
   line-height:1.15;
   letter-spacing:.005em;
 }
 
-.section__body{ max-width:44rem; padding-top:.35rem; }
+.panel__body{ max-width:44rem; padding-top:.35rem; }
 
 /* Keep the Bio details quieter than the longer artist statement. */
-#bio .section__body{ font-size:clamp(.85rem, .25vw + .8rem, .95rem); }
+#bio .panel__body{ font-size:clamp(.85rem, .25vw + .8rem, .95rem); }
 
 /* Prose */
 .prose{ color:var(--ink-soft); max-width:38rem; }
@@ -367,38 +377,40 @@ main{ margin-left:var(--sidebar-w); }
 
 .mobilebar{
   display:none;
-  position:fixed; inset:0 0 auto 0;
+  position:fixed;
+  top:0; left:0; right:0;
   z-index:80;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  padding:.85rem 1.1rem;
-  background:color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--rule);
-}
-.mobilebar__name{
-  font-family:"Geist", sans-serif;
-  font-size:1.125rem;
-  font-weight:700;
-  letter-spacing:.01em;
-  white-space:nowrap;
+  justify-content:flex-end;
+  padding:.6rem .75rem;
+  pointer-events:none;          /* the bar itself must not block the artwork */
 }
 
 .menu-toggle{
-  width:2.25rem; height:2.25rem;
+  width:2.5rem; height:2.5rem;
   display:grid; align-content:center; gap:5px;
-  padding:0 .3rem;
+  padding:0 .35rem;
   background:none; border:0; cursor:pointer;
+  pointer-events:auto;
 }
 .menu-toggle span{
-  height:1px; width:100%;
-  background:var(--ink);
-  transition:transform .35s var(--ease), opacity .25s var(--ease);
+  height:1.5px; width:100%;
+  background:#fbf9f6;
+  box-shadow:0 1px 6px rgba(0,0,0,.5);
+  transition:transform .35s var(--ease), opacity .25s var(--ease), background .3s var(--ease);
 }
-.menu-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+/* over a panel the bar sits on paper, so flip the bars to ink */
+body.panel-open .menu-toggle span{
+  background:var(--ink);
+  box-shadow:none;
+}
+/* …but the open drawer puts a dark scrim behind it, so keep them light */
+body.menu-open .menu-toggle span{
+  background:#fbf9f6;
+  box-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.menu-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
 
 .scrim{
   position:fixed; inset:0; z-index:55;
@@ -407,27 +419,7 @@ main{ margin-left:var(--sidebar-w); }
 }
 .scrim.is-on{ opacity:1; }
 
-/* ══════════════════════  REVEAL  ═══════════════════════════ */
-
-[data-reveal]{
-  opacity:0;
-  transform:translateY(18px);
-  transition:opacity .9s var(--ease), transform .9s var(--ease);
-}
-[data-reveal].is-in{ opacity:1; transform:none; }
-
 /* ══════════════════════  RESPONSIVE  ═══════════════════════ */
-
-@media (max-width:1024px){
-  .hero{ grid-template-columns:1fr; min-height:0; }
-  .hero__text{ padding-top:clamp(6rem,14vh,9rem); padding-bottom:clamp(2rem,6vh,4rem); max-width:none; }
-  .hero__figure{
-    position:static;
-    width:calc(100% - (var(--pad) * 2));
-    max-width:34rem;
-    margin:0 var(--pad) clamp(2rem,6vh,4rem) auto;
-  }
-}
 
 @media (max-width:860px){
   .mobilebar{ display:flex; }
@@ -439,18 +431,32 @@ main{ margin-left:var(--sidebar-w); }
     box-shadow:0 0 60px rgba(25,24,22,.12);
   }
   .sidebar.is-open{ transform:none; }
-  .sidebar__inner{ padding-top:5rem; }
+  .sidebar__inner{ padding-top:4.5rem; }
 
-  main{ margin-left:0; padding-top:3.6rem; }
+  main{ inset:0; }
 
-  .section{ grid-template-columns:1fr; gap:1.5rem; min-height:0; }
+  .hero__name{ white-space:normal; letter-spacing:.1em; }
+
+  .hero__veil{
+    background:
+      linear-gradient(to bottom,
+        rgba(12,10,9,.62) 0%,
+        rgba(12,10,9,.3) 34%,
+        rgba(12,10,9,0)  62%);
+  }
+
+  .panel__scroll{
+    grid-template-columns:1fr;
+    gap:1.5rem;
+    padding-top:clamp(4.25rem,10vh,5.5rem);
+  }
+  /* the hamburger already occupies this corner — the drawer's Home link closes a panel */
+  .panel__close{ display:none; }
 }
 
 @media (prefers-reduced-motion:reduce){
-  html{ scroll-behavior:auto; }
   *,*::before,*::after{
     animation-duration:.001ms !important;
     transition-duration:.001ms !important;
   }
-  [data-reveal]{ opacity:1; transform:none; }
 }
