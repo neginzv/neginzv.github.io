@@ -87,9 +87,21 @@ a{ color:inherit; text-decoration:none; }
 
 /* ── Nav ─────────────────────────────────────────────────── */
 
+/* The nav sits low on the page, but it must not be *centred*: with
+   `margin-top:auto` the block slid upward as a section unfolded, dragging
+   rows out from under the pointer and cascading open whatever landed
+   beneath it. This spacer holds the nav down while there is room and
+   collapses first when there isn't, so the list grows downward and every
+   row stays where the pointer left it. */
+.sidebar__inner::before{
+  content:"";
+  flex:0 24 22vh;               /* high shrink factor: gives way before the nav does */
+  min-height:0;
+}
+
 .nav{
-  margin-top:auto;
-  min-height:0;                 /* the nav is now tall enough to need to scroll */
+  flex:0 1 auto;
+  min-height:0;                 /* the nav is tall enough to need to scroll */
   overflow-y:auto;
   overflow-x:hidden;
   scrollbar-width:none;
@@ -139,14 +151,23 @@ a{ color:inherit; text-decoration:none; }
 }
 .nav li.is-expanded > .nav__sub{ display:block; }
 
-/* the revealed rows drift down into place */
-.nav li.is-expanded > .nav__sub > li{
+/* Resting the pointer on a section opens it too, without committing to it.
+   Mouse only — on a touch screen :hover sticks after a tap and would leave
+   the menu hanging open. The sub-list sits inside the <li>, so the pointer
+   stays "on" the section while it travels down into the revealed rows. */
+@media (hover:hover) and (pointer:fine){
+  .nav li:hover > .nav__sub{ display:block; }
+}
+
+/* Rows drift down whenever a sub-list is revealed — going from display:none
+   to block restarts the animation, so this covers hover and click alike. */
+.nav__sub > li{
   animation:navUnfold .32s var(--ease) backwards;
 }
-.nav li.is-expanded > .nav__sub > li:nth-child(2){ animation-delay:.04s; }
-.nav li.is-expanded > .nav__sub > li:nth-child(3){ animation-delay:.08s; }
-.nav li.is-expanded > .nav__sub > li:nth-child(4){ animation-delay:.12s; }
-.nav li.is-expanded > .nav__sub > li:nth-child(5){ animation-delay:.16s; }
+.nav__sub > li:nth-child(2){ animation-delay:.04s; }
+.nav__sub > li:nth-child(3){ animation-delay:.08s; }
+.nav__sub > li:nth-child(4){ animation-delay:.12s; }
+.nav__sub > li:nth-child(5){ animation-delay:.16s; }
 
 @keyframes navUnfold{
   from{ opacity:0; transform:translateY(-.3rem); }
@@ -601,6 +622,16 @@ body.menu-open .menu-toggle span{
   .panel__close{ display:none; }
 
   .panel--work .panel__scroll{ max-width:none; }
+}
+
+/* Short windows: the fully-opened tree plus Contact can outgrow the sidebar,
+   and the nav's scrollbar is hidden, so anything past the fold would simply
+   vanish. Tighten the rows instead of letting Contact scroll out of reach. */
+@media (min-width:861px) and (max-height:730px){
+  .nav a{ padding-top:.34rem; padding-bottom:.34rem; }
+  .nav__sub a{ padding-top:.22rem; padding-bottom:.22rem; }
+  .nav__sub a::before{ top:.92rem; }
+  .nav__sub{ margin-bottom:.3rem; }
 }
 
 @media (prefers-reduced-motion:reduce){
