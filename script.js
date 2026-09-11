@@ -54,8 +54,29 @@
     document.body.classList.toggle('panel-open', id !== 'home');
 
     links.forEach(function (a) {
-      a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+      a.classList.remove('is-active', 'is-trail');
     });
+
+    // light the open section, and keep its parent categories lit above it
+    var active = links.filter(function (a) {
+      return a.getAttribute('href') === '#' + id;
+    })[0];
+
+    if (active) {
+      active.classList.add('is-active');
+
+      var li = active.closest('li');
+      while (li) {
+        li = li.parentElement.closest('li');
+        if (!li) break;
+        var parent = li.querySelector(':scope > a[data-nav]');
+        if (parent) parent.classList.add('is-trail');
+      }
+
+      if (active.scrollIntoView) {
+        active.scrollIntoView({ block: 'nearest' });
+      }
+    }
 
     var open = document.getElementById(id);
     if (open) {

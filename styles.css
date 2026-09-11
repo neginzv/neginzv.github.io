@@ -87,7 +87,14 @@ a{ color:inherit; text-decoration:none; }
 
 /* ── Nav ─────────────────────────────────────────────────── */
 
-.nav{ margin-top:auto; }
+.nav{
+  margin-top:auto;
+  min-height:0;                 /* the nav is now tall enough to need to scroll */
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+.nav::-webkit-scrollbar{ width:0; height:0; }
 
 .nav ul{ margin:0; padding:0; list-style:none; }
 
@@ -120,6 +127,43 @@ a{ color:inherit; text-decoration:none; }
 
 .nav a.is-active{ color:var(--ink); }
 .nav a.is-active::before{ transform:scaleX(1); opacity:1; background:var(--accent); }
+
+
+/* ── Nested project nav ──────────────────────────────────── */
+
+.nav__sub{
+  margin:.1rem 0 .45rem;
+  padding:0;
+  list-style:none;
+}
+.nav__sub li + li{ margin-top:0; }
+
+.nav__sub a{
+  padding:.3rem 0 .3rem 2.9rem;
+  font-size:.8125rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.nav__sub a::before{
+  left:2rem;
+  top:1rem;                     /* pin to the first line so wrapped labels stay aligned */
+  width:.6rem;
+  transform:scaleX(.5);
+}
+.nav__sub a:hover{ color:var(--ink-soft); }
+.nav__sub a.is-active{ color:var(--ink); }
+
+/* third level — individual works */
+.nav__sub .nav__sub a{
+  padding-left:3.75rem;
+  font-size:.78125rem;
+  font-style:italic;
+}
+.nav__sub .nav__sub a::before{ left:2.9rem; }
+
+/* a category stays lit while one of its works is open */
+.nav a.is-trail{ color:var(--ink-soft); }
+.nav a.is-trail::before{ transform:scaleX(.7); opacity:.75; }
 
 /* ── Sidebar foot ────────────────────────────────────────── */
 
@@ -345,6 +389,93 @@ main{
   color:var(--muted);
 }
 
+
+/* ── Section index (category / project listings) ─────────── */
+
+.index{
+  margin:0; padding:0; list-style:none;
+  border-top:1px solid var(--rule);
+  max-width:36rem;
+}
+.index li{ border-bottom:1px solid var(--rule); }
+.index a{
+  display:block;
+  padding:1.05rem 0;
+  transition:color .3s var(--ease), padding-left .35s var(--ease);
+}
+.index a:hover{ color:var(--accent); padding-left:.5rem; }
+
+.index__name{
+  display:block;
+  font-size:1.0625rem;
+  letter-spacing:.03em;
+}
+.index__works{
+  display:block;
+  margin-top:.3rem;
+  font-size:.75rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+
+.empty{
+  margin:0;
+  padding-top:.25rem;
+  font-size:.875rem;
+  letter-spacing:.04em;
+  color:var(--muted);
+}
+
+/* ── Work pages: title + text, then plates stacked to scroll ── */
+
+.panel--work .panel__scroll{
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(1.6rem,3vh,2.4rem);
+  max-width:58rem;
+  margin:0 auto;
+}
+
+.panel--work .panel__head h2{
+  font-size:clamp(1.5rem,2.6vw,2.15rem);
+  letter-spacing:.02em;
+}
+.panel--work .panel__head .eyebrow a{
+  transition:color .3s var(--ease);
+}
+.panel--work .panel__head .eyebrow a:hover{ color:var(--accent); }
+
+.work__place{
+  margin:.7rem 0 0;
+  font-size:.75rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.panel--work .panel__body{ max-width:none; padding-top:0; min-width:0; }
+.panel--work .prose{ max-width:38rem; }
+
+.plates{
+  margin-top:clamp(2.75rem,7vh,4.5rem);
+  display:flex;
+  flex-direction:column;
+  gap:clamp(2rem,5vh,3.5rem);
+  min-width:0;                  /* never let the plates' intrinsic width widen the column */
+}
+
+.plate{ margin:0; min-width:0; }
+.plate img{
+  width:100%;
+  height:auto;
+  background:var(--paper-warm);
+}
+.plate figcaption{
+  margin-top:.7rem;
+  font-size:.75rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+
 /* ── Contact list ────────────────────────────────────────── */
 
 .contact-list{
@@ -446,12 +577,14 @@ body.menu-open .menu-toggle span{
   }
 
   .panel__scroll{
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
     gap:1.5rem;
     padding-top:clamp(4.25rem,10vh,5.5rem);
   }
   /* the hamburger already occupies this corner — the drawer's Home link closes a panel */
   .panel__close{ display:none; }
+
+  .panel--work .panel__scroll{ max-width:none; }
 }
 
 @media (prefers-reduced-motion:reduce){

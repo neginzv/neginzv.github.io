@@ -37,8 +37,39 @@
         <li><a href="#home"      data-nav>Home</a></li>
         <li><a href="#bio"       data-nav>Bio</a></li>
         <li><a href="#statement" data-nav>Artist Statement</a></li>
-        <li><a href="#project"   data-nav>Project</a></li>
-        <li><a href="#contact"   data-nav>Contact</a></li>
+
+        <li>
+          <a href="#projects" data-nav>Projects</a>
+          <ul class="nav__sub">
+            <li><a href="#photography" data-nav>Photography</a></li>
+
+            <li>
+              <a href="#image-experiments" data-nav>Image Experiments</a>
+              <ul class="nav__sub nav__sub--works">
+                <li><a href="#fractured-contact" data-nav>Fractured Contact</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#performance" data-nav>Performance</a>
+              <ul class="nav__sub">
+                <li><a href="#music-performance"      data-nav>Music Performance</a></li>
+                <li><a href="#conceptual-performance" data-nav>Conceptual Performance</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#installation" data-nav>Installation</a>
+              <ul class="nav__sub nav__sub--works">
+                <li><a href="#ask-the-mirror" data-nav>Ask the Mirror</a></li>
+              </ul>
+            </li>
+
+            <li><a href="#mixed-media" data-nav>Mixed Media</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#contact" data-nav>Contact</a></li>
       </ul>
     </nav>
 
@@ -131,8 +162,8 @@
     </div>
   </section>
 
-  <!-- PROJECT ──────────────────────────────────────────────────────── -->
-  <section id="project" class="panel" data-panel hidden>
+  <!-- PROJECTS ─────────────────────────────────────────────────────── -->
+  <section id="projects" class="panel" data-panel hidden>
     <div class="panel__scroll">
       <button class="panel__close" type="button" aria-label="Close">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -141,23 +172,257 @@
       </button>
       <header class="panel__head">
         <p class="eyebrow">03</p>
-        <h2>Project</h2>
+        <h2>Projects</h2>
       </header>
       <div class="panel__body">
-        <!-- TEXT PLACEHOLDER — add project description here -->
-        <div class="prose is-hidden" data-placeholder="project"></div>
-
-        <!-- PROJECT GRID — ready to use. Delete class "is-hidden" and fill in.
-        <ul class="works">
-          <li class="work">
-            <a href="#">
-              <figure><img src="images/work-01.jpg" alt=""></figure>
-              <h3>Project title</h3>
-              <p class="work__meta">Venue · Year</p>
+        <ul class="index">
+          <li>
+            <a href="#photography">
+              <span class="index__name">Photography</span>
+            </a>
+          </li>
+          <li>
+            <a href="#image-experiments">
+              <span class="index__name">Image Experiments</span>
+              <span class="index__works">Fractured Contact</span>
+            </a>
+          </li>
+          <li>
+            <a href="#performance">
+              <span class="index__name">Performance</span>
+              <span class="index__works">Music Performance · Conceptual Performance</span>
+            </a>
+          </li>
+          <li>
+            <a href="#installation">
+              <span class="index__name">Installation</span>
+              <span class="index__works">Ask the Mirror the Name of Your Savior</span>
+            </a>
+          </li>
+          <li>
+            <a href="#mixed-media">
+              <span class="index__name">Mixed Media</span>
             </a>
           </li>
         </ul>
-        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORY: PHOTOGRAPHY ──────────────────────────────────────── -->
+  <section id="photography" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">Projects</p>
+        <h2>Photography</h2>
+      </header>
+      <div class="panel__body">
+        <p class="empty">Works in this section are being prepared.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORY: IMAGE EXPERIMENTS ────────────────────────────────── -->
+  <section id="image-experiments" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">Projects</p>
+        <h2>Image Experiments</h2>
+      </header>
+      <div class="panel__body">
+        <ul class="works">
+          <li class="work">
+            <a href="#fractured-contact">
+              <figure><img src="images/fractured-contact/fractured-contact-01.jpg" alt="Fractured Contact — scanner image" loading="lazy" width="1280" height="930"></figure>
+              <h3>Fractured Contact</h3>
+              <p class="work__meta">Vancouver, Canada · 2026</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WORK: FRACTURED CONTACT ────────────────────────────────────── -->
+  <section id="fractured-contact" class="panel panel--work" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#image-experiments">Image Experiments</a></p>
+        <h2>Fractured Contact</h2>
+        <p class="work__place">Vancouver, Canada — 2026</p>
+      </header>
+      <div class="panel__body">
+        <div class="prose">
+          <p>This series is created using a scanner — a device that, rather than capturing a single moment, allows time to pass across the surface of the body. In this process, the image becomes stretched, fragmented, and disrupted, and the body shifts from a recognizable form into an unstable presence.</p>
+
+          <p>The distortion of faces, the fragmented repetition of hands, and the collapse of a family image all point to a personal experience of distance — one that is not merely geographical, but rooted in the inability to touch and make contact.</p>
+
+          <p>At a time when my family is living within the context of war and I remain physically distant, this work becomes an attempt to reconsider “presence” when access to it is no longer possible.</p>
+
+          <p>These images are neither documentary nor direct representations; they are translations of absence.</p>
+
+          <p>Each scan records an impossible act of contact.</p>
+        </div>
+
+        <div class="plates">
+          <figure class="plate"><img src="images/fractured-contact/fractured-contact-01.jpg" alt="Fractured Contact, scanner image" loading="lazy" width="1280" height="930"></figure>
+          <figure class="plate"><img src="images/fractured-contact/fractured-contact-02.jpg" alt="Fractured Contact, scanner image" loading="lazy" width="1280" height="930"></figure>
+          <figure class="plate"><img src="images/fractured-contact/fractured-contact-03.jpg" alt="Fractured Contact, scanner image" loading="lazy" width="1280" height="930"></figure>
+          <figure class="plate"><img src="images/fractured-contact/fractured-contact-04.jpg" alt="Fractured Contact, scanner image" loading="lazy" width="1280" height="930"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORY: PERFORMANCE ──────────────────────────────────────── -->
+  <section id="performance" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">Projects</p>
+        <h2>Performance</h2>
+      </header>
+      <div class="panel__body">
+        <ul class="index">
+          <li><a href="#music-performance"><span class="index__name">Music Performance</span></a></li>
+          <li><a href="#conceptual-performance"><span class="index__name">Conceptual Performance</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="music-performance" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#performance">Performance</a></p>
+        <h2>Music Performance</h2>
+      </header>
+      <div class="panel__body">
+        <p class="empty">Works in this section are being prepared.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="conceptual-performance" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#performance">Performance</a></p>
+        <h2>Conceptual Performance</h2>
+      </header>
+      <div class="panel__body">
+        <p class="empty">Works in this section are being prepared.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORY: INSTALLATION ─────────────────────────────────────── -->
+  <section id="installation" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">Projects</p>
+        <h2>Installation</h2>
+      </header>
+      <div class="panel__body">
+        <ul class="works">
+          <li class="work">
+            <a href="#ask-the-mirror">
+              <figure><img src="images/ask-the-mirror/ask-the-mirror-01.jpg" alt="Ask the Mirror the Name of Your Savior — mirrored installation" loading="lazy" width="1009" height="1280"></figure>
+              <h3>Ask the Mirror the Name of Your Savior</h3>
+              <p class="work__meta">Strasbourg, France · 2024</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WORK: ASK THE MIRROR ───────────────────────────────────────── -->
+  <section id="ask-the-mirror" class="panel panel--work" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#installation">Installation</a></p>
+        <h2>Ask the Mirror the Name of Your Savior</h2>
+        <p class="work__place">Strasbourg, France — 2024</p>
+      </header>
+      <div class="panel__body">
+        <div class="prose">
+          <p>The title of this work is borrowed from a poem by Forough Farrokhzad and reflects on self-recognition and confronting one’s own reflection: salvation does not lie outside the individual but emerges through facing oneself.</p>
+
+          <p>Mirrors and mirror art have deep roots in the visual and architectural traditions of Iran. In this work, the mirror is not merely a physical material but a conceptual medium that enables reflection and awareness, allowing the individual to encounter themselves as their potential savior.</p>
+
+          <p>The piece presents an interpretation of the world map through sharp, faceted mirrored cubes — forms representing continents and territories, constructed spaces that humans inhabit. Their angular and fragmented nature reflects both the artificiality of borders and the multiplicity of perspectives that shape our understanding of the world.</p>
+
+          <p>Within this mirrored geography, each surface reflects another, with images overlapping and intersecting, much like the way human decisions and actions continuously influence and reshape one another. The work suggests interconnectedness, where no element exists in isolation and every movement resonates across a wider field.</p>
+
+          <p>Light plays a central role, moving across mirrored surfaces, refracting, and extending beyond physical boundaries, illuminating ceilings, floors, and bodies, creating a dynamic, ever-changing environment.</p>
+
+          <p>By existing simultaneously in natural and urban settings, the work expands the concept of reflection beyond a visual phenomenon, proposing it as a condition of being — where self, others, and the environment exist in constant and inseparable relation.</p>
+        </div>
+
+        <div class="plates">
+          <figure class="plate"><img src="images/ask-the-mirror/ask-the-mirror-01.jpg" alt="Ask the Mirror the Name of Your Savior, mirrored installation" loading="lazy" width="1009" height="1280"></figure>
+          <figure class="plate"><img src="images/ask-the-mirror/ask-the-mirror-02.jpg" alt="Ask the Mirror the Name of Your Savior, mirrored installation" loading="lazy" width="1084" height="1280"></figure>
+          <figure class="plate"><img src="images/ask-the-mirror/ask-the-mirror-03.jpg" alt="Ask the Mirror the Name of Your Savior, mirrored installation" loading="lazy" width="960" height="1280"></figure>
+          <figure class="plate"><img src="images/ask-the-mirror/ask-the-mirror-04.jpg" alt="Ask the Mirror the Name of Your Savior, mirrored installation" loading="lazy" width="1084" height="1280"></figure>
+          <figure class="plate"><img src="images/ask-the-mirror/ask-the-mirror-05.jpg" alt="Ask the Mirror the Name of Your Savior, mirrored installation" loading="lazy" width="960" height="1280"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORY: MIXED MEDIA ──────────────────────────────────────── -->
+  <section id="mixed-media" class="panel" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow">Projects</p>
+        <h2>Mixed Media</h2>
+      </header>
+      <div class="panel__body">
+        <p class="empty">Works in this section are being prepared.</p>
       </div>
     </div>
   </section>

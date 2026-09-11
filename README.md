@@ -37,11 +37,32 @@ Example:
 </div>
 ```
 
-### Project grid
+### Projects
 
-`index.html` has a commented-out `<ul class="works">` block inside the Project
-section. Uncomment it, drop images into `assets/`, and duplicate the `<li>` per
-project — the grid, hover zoom, and responsive columns are already styled.
+Projects are organised as nested panels, routed by URL hash:
+
+```
+#projects              index of all categories
+  #photography
+  #image-experiments   → #fractured-contact
+  #performance         → #music-performance, #conceptual-performance
+  #installation        → #ask-the-mirror
+  #mixed-media
+```
+
+The sidebar mirrors this tree. A category with no work yet shows a
+`<p class="empty">` note.
+
+**Adding a work.** Copy an existing `panel--work` section in `index.html`,
+give it a new `id`, and add a matching `<li>` under its category in the
+sidebar `nav__sub`. The layout is: eyebrow (linking back to the category),
+title, `work__place` (city — year), a `.prose` block, then a `.plates`
+block of full-width `<figure class="plate">` images that stack and scroll.
+Drop the images in `images/<work-slug>/` and set `width`/`height` on each
+`<img>` so the page doesn't reflow as they load.
+
+To list the work on its category page, add an `<li class="work">` to that
+category's `<ul class="works">` grid.
 
 ### Contact
 
