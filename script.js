@@ -27,9 +27,17 @@
 
   scrim.addEventListener('click', function () { setMenu(false); });
 
-  // close after tapping a nav link on small screens
+  // close after tapping a nav link on small screens — but not when the tap
+  // only unfolds a section, or the list it just revealed would slide away
   sidebar.addEventListener('click', function (e) {
-    if (e.target.closest('a') && window.matchMedia('(max-width: 860px)').matches) setMenu(false);
+    var link = e.target.closest('a');
+    if (!link || !window.matchMedia('(max-width: 860px)').matches) return;
+
+    var li = link.closest('li');
+    var unfolds = li && li.querySelector(':scope > .nav__sub') &&
+                  !li.classList.contains('is-expanded');
+
+    if (!unfolds) setMenu(false);
   });
 
   /* ── Panel router ─────────────────────────────────────── */
@@ -57,7 +65,11 @@
       a.classList.remove('is-active', 'is-trail');
     });
 
-    // light the open section, and keep its parent categories lit above it
+    // Sub-lists stay folded away; only the branch you are standing in opens.
+    Array.prototype.forEach.call(document.querySelectorAll('.nav li'), function (li) {
+      li.classList.remove('is-expanded');
+    });
+
     var active = links.filter(function (a) {
       return a.getAttribute('href') === '#' + id;
     })[0];
@@ -65,10 +77,14 @@
     if (active) {
       active.classList.add('is-active');
 
+      // open the section you just clicked, plus every section above it
       var li = active.closest('li');
+      if (li && li.querySelector(':scope > .nav__sub')) li.classList.add('is-expanded');
+
       while (li) {
         li = li.parentElement.closest('li');
         if (!li) break;
+        li.classList.add('is-expanded');
         var parent = li.querySelector(':scope > a[data-nav]');
         if (parent) parent.classList.add('is-trail');
       }
@@ -77,6 +93,13 @@
         active.scrollIntoView({ block: 'nearest' });
       }
     }
+
+    links.forEach(function (a) {
+      var li = a.closest('li');
+      if (li && li.querySelector(':scope > .nav__sub')) {
+        a.setAttribute('aria-expanded', String(li.classList.contains('is-expanded')));
+      }
+    });
 
     var open = document.getElementById(id);
     if (open) {

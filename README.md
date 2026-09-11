@@ -50,8 +50,12 @@ Projects are organised as nested panels, routed by URL hash:
   #mixed-media
 ```
 
-The sidebar mirrors this tree. A category with no work yet shows a
-`<p class="empty">` note.
+The sidebar mirrors this tree, folded. Only the top-level items show until
+you open a section: clicking Projects reveals the categories, clicking a
+category reveals its works. Expansion follows the open panel rather than a
+separate click state, so a deep link like `#fractured-contact` arrives with
+Projects and Image Experiments already unfolded. A category with no work
+yet shows a `<p class="empty">` note.
 
 **Adding a work.** Copy an existing `panel--work` section in `index.html`,
 give it a new `id`, and add a matching `<li>` under its category in the
