@@ -427,6 +427,55 @@ main{
 }
 
 
+/* ── Performance list (dated entries, newest first) ──────── */
+
+.gigs{
+  margin:0; padding:0; list-style:none;
+  border-top:1px solid var(--rule);
+}
+.gig{
+  display:grid;
+  grid-template-columns:minmax(0,11rem) minmax(0,1fr);
+  gap:clamp(.75rem,2vw,2rem);
+  padding:1.35rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.gig__when{
+  margin:0;
+  padding-top:.2rem;
+  font-size:.75rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.gig__what h3{
+  margin:0;
+  font-family:var(--serif);
+  font-size:1.0625rem;
+  font-weight:400;
+  letter-spacing:.02em;
+  line-height:1.5;
+}
+.gig__note{
+  margin:.3rem 0 0;
+  font-size:.8125rem;
+  letter-spacing:.04em;
+  color:var(--ink-soft);
+}
+.gig__where{
+  margin:.3rem 0 0;
+  font-size:.8125rem;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+.gig__text{
+  margin:.85rem 0 0;
+  max-width:38rem;
+  font-size:.9375rem;
+  color:var(--ink-soft);
+}
+
 /* ── Section index (category / project listings) ─────────── */
 
 .index{
@@ -622,6 +671,13 @@ body.menu-open .menu-toggle span{
   .panel__close{ display:none; }
 
   .panel--work .panel__scroll{ max-width:none; }
+
+  /* the date column has nowhere to sit beside the title on a phone */
+  .gig{
+    grid-template-columns:minmax(0,1fr);
+    gap:.4rem;
+  }
+  .gig__when{ padding-top:0; }
 }
 
 /* Short windows: the fully-opened tree plus Contact can outgrow the sidebar,
