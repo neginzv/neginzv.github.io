@@ -349,6 +349,7 @@ main{
 }
 
 .panel__body{ max-width:44rem; padding-top:.35rem; }
+.panel__body--wide{ max-width:54rem; }
 
 /* Keep the Bio details quieter than the longer artist statement. */
 #bio .panel__body{ font-size:clamp(.85rem, .25vw + .8rem, .95rem); }
@@ -474,6 +475,59 @@ main{
   max-width:38rem;
   font-size:.9375rem;
   color:var(--ink-soft);
+}
+
+/* A single entry carrying an image: the photograph sets the tone,
+   the text keeps its own column beside it rather than becoming a
+   caption. The hairlines come off so the image is the anchor. */
+
+/* The head drops above the body instead of holding a 13rem column
+   that would otherwise sit empty beside a lone entry — the width it
+   gives back is what lets the photograph read large. */
+.panel--feature .panel__scroll{
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(1.6rem,3vh,2.4rem);
+}
+.panel--feature .panel__body{ max-width:none; }
+
+.gigs--feature{ border-top:0; }
+
+/* Stacked by default: below ~1180px the sidebar and the panel's own
+   head column leave too little room to split the body in two, and a
+   half-width photo next to a 20-character measure serves neither. */
+.gig--feature{
+  grid-template-columns:minmax(0,1fr);
+  gap:1.35rem;
+  padding:0;
+  border-bottom:0;
+}
+.gig__figure{
+  margin:0;
+  background:#0d0c14;           /* the photo is near-black; match it while it loads */
+  overflow:hidden;
+}
+.gig__figure img{
+  width:100%;
+  height:auto;
+}
+.gig--feature .gig__when{ margin-bottom:.6rem; }
+.gig--feature .gig__what h3{
+  font-size:1.3125rem;
+  line-height:1.4;
+}
+.gig--feature .gig__text{
+  margin-top:1rem;
+  max-width:32rem;
+}
+
+/* Wide enough to set the photo beside the text and still keep a
+   readable measure on both. */
+@media (min-width:1180px){
+  .gig--feature{
+    grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);
+    gap:clamp(1.5rem,2.6vw,2.75rem);
+    align-items:center;
+  }
 }
 
 /* ── Section index (category / project listings) ─────────── */
