@@ -490,7 +490,11 @@ main{
 }
 .panel--feature .panel__body{ max-width:none; }
 
-.gigs--feature{ border-top:0; }
+.gigs--feature{
+  border-top:0;
+  display:grid;
+  gap:clamp(2.75rem,7vh,5rem);   /* several entries, none of them ruled */
+}
 
 /* Stacked by default: below ~1180px the sidebar and the panel's own
    head column leave too little room to split the body in two, and a
@@ -528,6 +532,116 @@ main{
     gap:clamp(1.5rem,2.6vw,2.75rem);
     align-items:center;
   }
+}
+
+/* ── Gallery (a feature entry carrying several photographs) ───
+   The frame keeps one ratio whatever the photographs do, so the
+   entry does not jump height as you move from a wide stage shot
+   to an upright one. Arrows only surface under the pointer: at
+   rest there is nothing on the picture but the picture. Without
+   JS the strip is still a plain scroller — swipe and trackpad
+   both work, you just lose the arrows and the dashes. */
+
+/* The dark mat and the clipping move onto the frame, so the dashes
+   below it sit on paper and the arrows centre on the photograph
+   rather than on the photograph-plus-dashes. */
+.gallery{ background:none; overflow:visible; }
+
+.gallery__frame{
+  position:relative;
+  background:#0d0c14;           /* letterbox for whatever ratio the photograph is */
+  overflow:hidden;
+}
+
+.gallery__viewport{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;              /* the dashes below carry the position */
+  -ms-overflow-style:none;
+}
+.gallery__viewport::-webkit-scrollbar{ display:none; }
+
+.gallery__viewport > img{
+  flex:0 0 100%;
+  width:100%;
+  aspect-ratio:var(--gallery-ratio, 3 / 2);
+  object-fit:contain;                /* the poster must not lose its type */
+  scroll-snap-align:center;
+}
+
+/* Sits over the photograph, so it carries its own dark disc rather
+   than trusting whatever pixels happen to be underneath it. The disc
+   has to hold a white chevron over the poster, which is mostly white
+   paper — hence the weight of it, and hence the fade landing on a
+   fully opaque button rather than a half-transparent one. */
+.gallery__arrow{
+  position:absolute;
+  top:50%;
+  z-index:2;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+  width:2.6rem; height:2.6rem;
+  margin:0; padding:0;
+  border:0; border-radius:50%;
+  background:rgba(13,12,20,.62);
+  -webkit-backdrop-filter:blur(7px);
+  backdrop-filter:blur(7px);
+  color:var(--paper);
+  cursor:pointer;
+  opacity:0;
+  transition:opacity .35s var(--ease), background-color .35s var(--ease);
+}
+.gallery__arrow--prev{ left:clamp(.5rem,1.6vw,1.1rem); }
+.gallery__arrow--next{ right:clamp(.5rem,1.6vw,1.1rem); }
+
+.gallery:hover .gallery__arrow,
+.gallery:focus-within .gallery__arrow{ opacity:1; }
+.gallery__arrow:hover{ background:rgba(13,12,20,.82); }
+.gallery__arrow:focus-visible{ opacity:1; }
+
+/* At either end there is nothing to go to, and a dead arrow would
+   still read as an invitation. The leading .gallery is only there to
+   outrank the :hover rule above. */
+.gallery .gallery__arrow[disabled]{ opacity:0; pointer-events:none; }
+
+/* Nothing to hover with, so the affordance has to stand on its own. */
+@media (hover:none){
+  .gallery__arrow{ opacity:.6; }
+}
+
+/* Hairlines rather than dots — the panel is already ruled this way. */
+.gallery__dots{
+  display:flex;
+  justify-content:center;
+  gap:.45rem;
+  margin:.8rem 0 0;
+  padding:0;
+  list-style:none;
+}
+.gallery__dot{
+  position:relative;
+  width:1.6rem; height:.8rem;
+  padding:0; border:0;
+  background:none;
+  cursor:pointer;
+}
+.gallery__dot::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:50%;
+  height:1px;
+  background:rgba(25,24,22,.2);
+  transition:background-color .35s var(--ease);
+}
+.gallery__dot[aria-current="true"]::before{ background:var(--ink); }
+.gallery__dot:hover::before{ background:var(--accent); }
+
+@media (prefers-reduced-motion:reduce){
+  .gallery__viewport{ scroll-behavior:auto; }
 }
 
 /* ── Section index (category / project listings) ─────────── */
