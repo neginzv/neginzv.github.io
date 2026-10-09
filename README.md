@@ -43,7 +43,7 @@ Projects are organised as nested panels, routed by URL hash:
 
 ```
 #projects              index of all categories
-  #photography
+  #photography         → #people-cities, #observations, #black-and-white
   #image-experiments   → #fractured-contact
   #performance         → #music-performance, #conceptual-performance
   #installation        → #ask-the-mirror
@@ -68,6 +68,18 @@ Drop the images in `images/<work-slug>/` and set `width`/`height` on each
 
 To list the work on its category page, add an `<li class="work">` to that
 category's `<ul class="works">` grid.
+
+**Adding a photograph.** Photography series (`panel--series`) hang their
+prints in a justified contact sheet — rows of even height, nothing
+cropped — and open them in a full-screen lightbox. Put the file in
+`images/photography/<series>/` and add an `<li class="shot">` to that
+series' `<ul class="shots">`: the `<a class="shot__link">` points at the
+full-size file, the `<img>` carries real `width`/`height` (the layout reads
+the ratio from them) and `style="--r: width/height"` for the no-JS
+fallback, and an optional `<figcaption class="shot__caption">` (place ·
+year) appears under the print and in the lightbox. For files much larger
+than ~1600px, also save a `-grid.jpg` copy around 1100px on the long edge
+and use that as the `<img src>`. Strip EXIF (phone photos carry GPS).
 
 ### Contact
 

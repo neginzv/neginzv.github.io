@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Geist:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2026-09-20a">
+<link rel="stylesheet" href="styles.css?v=2026-10-09d">
 </head>
 <body>
 
@@ -41,7 +41,14 @@
         <li>
           <a href="#projects" data-nav>Projects</a>
           <ul class="nav__sub">
-            <li><a href="#photography" data-nav>Photography</a></li>
+            <li>
+              <a href="#photography" data-nav>Photography</a>
+              <ul class="nav__sub">
+                <li><a href="#people-cities"   data-nav>People &amp; Cities</a></li>
+                <li><a href="#observations"    data-nav>Observations</a></li>
+                <li><a href="#black-and-white" data-nav>Black and White</a></li>
+              </ul>
+            </li>
 
             <li>
               <a href="#image-experiments" data-nav>Image Experiments</a>
@@ -179,6 +186,7 @@
           <li>
             <a href="#photography">
               <span class="index__name">Photography</span>
+              <span class="index__works">People &amp; Cities · Observations · Black and White</span>
             </a>
           </li>
           <li>
@@ -222,7 +230,137 @@
         <h2>Photography</h2>
       </header>
       <div class="panel__body">
+        <ul class="index">
+          <li><a href="#people-cities"><span class="index__name">People &amp; Cities</span><span class="index__works">Yerevan · Istanbul · Strasbourg · Kashan</span></a></li>
+          <li><a href="#observations"><span class="index__name">Observations</span></a></li>
+          <li><a href="#black-and-white"><span class="index__name">Black and White</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERIES: PEOPLE & CITIES ────────────────────────────────────── -->
+  <section id="people-cities" class="panel panel--series" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#photography">Photography</a></p>
+        <h2>People &amp; Cities</h2>
+      </header>
+      <div class="panel__body">
+        <ul class="shots" data-lightbox="People &amp; Cities">
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/people-cities/yerevan-2016.jpg"><img src="images/photography/people-cities/yerevan-2016.jpg" alt="A woman in black standing small at the foot of tilted basalt walls, light falling through the gaps between them" loading="lazy" width="960" height="1280"></a>
+              <figcaption class="shot__caption">Yerevan · 2016</figcaption>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.782">
+            <figure>
+              <a class="shot__link" href="images/photography/people-cities/istanbul-2015.jpg"><img src="images/photography/people-cities/istanbul-2015.jpg" alt="A girl with an accordion sitting on a step, a woven basket for coins at her feet" loading="lazy" width="1001" height="1280"></a>
+              <figcaption class="shot__caption">Istanbul · 2015</figcaption>
+            </figure>
+          </li>
+          <li class="shot" style="--r:1.4144">
+            <figure>
+              <a class="shot__link" href="images/photography/people-cities/strasbourg-2023.jpg"><img src="images/photography/people-cities/strasbourg-2023.jpg" alt="A man asleep on a tiered wooden bench under a tree, pigeons gathered on the path below" loading="lazy" width="1280" height="905"></a>
+              <figcaption class="shot__caption">Strasbourg · 2023</figcaption>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.7498">
+            <figure>
+              <a class="shot__link" href="images/photography/people-cities/kashan-2022-01.jpg"><img src="images/photography/people-cities/kashan-2022-01.jpg" alt="Two women in patterned chadors laughing in a mud-brick lane, a tiled mosque doorway behind them" loading="lazy" width="1190" height="1587"></a>
+              <figcaption class="shot__caption">Kashan · 2022</figcaption>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/people-cities/kashan-2022-02.jpg"><img src="images/photography/people-cities/kashan-2022-02-grid.jpg" alt="A vaulted dye-house hung with skeins of bright blue wool, two men working among them" loading="lazy" width="825" height="1100"></a>
+              <figcaption class="shot__caption">Kashan · 2022</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERIES: OBSERVATIONS ───────────────────────────────────────── -->
+  <section id="observations" class="panel panel--series" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#photography">Photography</a></p>
+        <h2>Observations</h2>
+      </header>
+      <div class="panel__body">
         <p class="empty">Works in this section are being prepared.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERIES: BLACK AND WHITE ────────────────────────────────────── -->
+  <section id="black-and-white" class="panel panel--series" data-panel hidden>
+    <div class="panel__scroll">
+      <button class="panel__close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+      <header class="panel__head">
+        <p class="eyebrow"><a href="#photography">Photography</a></p>
+        <h2>Black and White</h2>
+      </header>
+      <div class="panel__body">
+        <ul class="shots" data-lightbox="Black and White">
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-01.jpg"><img src="images/photography/black-and-white/bw-01.jpg" alt="A cat sitting on the pavement beside a car wheel and a wire fence, looking off to the side" loading="lazy" width="960" height="1280"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:1.3333">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-02.jpg"><img src="images/photography/black-and-white/bw-02-grid.jpg" alt="People dancing with raised arms in front of a projected film of a woman on a beach" loading="lazy" width="1100" height="825"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-03.jpg"><img src="images/photography/black-and-white/bw-03.jpg" alt="A figure reading on a sofa in silhouette against an open window, a bird in flight outside" loading="lazy" width="960" height="1280"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-04.jpg"><img src="images/photography/black-and-white/bw-04.jpg" alt="A white cat sitting on paving stones, looking straight at the camera" loading="lazy" width="960" height="1280"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-05.jpg"><img src="images/photography/black-and-white/bw-05.jpg" alt="A mother holding a small child close against her body" loading="lazy" width="960" height="1280"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:1.3333">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-06.jpg"><img src="images/photography/black-and-white/bw-06.jpg" alt="A woman in a leather jacket holding her hair across her face, an older woman passing behind her" loading="lazy" width="1280" height="960"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:0.75">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-07.jpg"><img src="images/photography/black-and-white/bw-07.jpg" alt="Shadows of a stairwell falling across a concrete wall, a bird perched on a railing" loading="lazy" width="960" height="1280"></a>
+            </figure>
+          </li>
+          <li class="shot" style="--r:1.3333">
+            <figure>
+              <a class="shot__link" href="images/photography/black-and-white/bw-08.jpg"><img src="images/photography/black-and-white/bw-08-grid.jpg" alt="Silhouetted figures in a dark room before a projected image of a dancer" loading="lazy" width="1100" height="825"></a>
+            </figure>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -646,6 +784,6 @@
 
 </main>
 
-<script src="script.js?v=2026-09-20a"></script>
+<script src="script.js?v=2026-10-09d"></script>
 </body>
 </html>
